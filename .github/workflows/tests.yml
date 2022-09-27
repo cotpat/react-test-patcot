@@ -1,0 +1,51 @@
+name: 🎭 Tests
+on:
+  push:
+    paths-ignore:
+      - .chglog/**
+      - .github/**
+      - '!.github/workflows/tests.yml'
+      - public/**
+      - .editorconfig
+      - .gitattributes
+      - .gitignore
+      - .htaccess
+      - CHANGELOG.md
+      - code-of-conduct.md
+      - CONTRIBUTING.md
+      - LICENSE.md
+      - README.md
+jobs:
+  # ----------------------
+  #   Silverstipe / PHP
+  # ----------------------
+  silverstripe:
+    name: 🧰 Silverstripe Testsuite
+    uses: syntro-opensource/workflows/.github/workflows/silverstripe.yml@master
+    with:
+      phpunit: true
+      phpunit_suite: app/tests/
+      # phpunit_config_file:
+      phpunit_php_version: '8.1'
+      phpstan: true
+      phpstan_dir: app/src/
+      phpstan_php_version: '8.1'
+      phpcs: true
+      phpcs_dir: app/
+      # behat: false
+      # behat_php_version: '8.1'
+  # ----------------------
+  #   Client
+  # ----------------------
+  client:
+    name: 📦 Client Assets Testsuite
+    uses: syntro-opensource/workflows/.github/workflows/client.yml@master
+    with:
+      eslint: true
+      eslint_dir: app/client/src/global/
+      eslint_configfile: app/client/src/global/.eslintrc
+      # eslint_ext:
+      # eslint_max-warnings:
+      stylelint: true
+      stylelint_glob: app/client/src/**/*.scss
+      # stylelint_max-warnings:

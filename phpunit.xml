@@ -1,0 +1,16 @@
+<phpunit bootstrap="app/tests/bootstrap.php" colors="true">
+    <testsuites>
+        <testsuite name="Default">
+            <directory>app/tests/php</directory>
+        </testsuite>
+    </testsuites>
+    <!-- <groups> <exclude> <group>sanitychecks</group> </exclude> </groups> -->
+    <coverage>
+        <exclude>
+            <directory suffix=".php">vendor/</directory>
+        </exclude>
+        <include>
+            <directory suffix=".php">app/src</directory>
+        </include>
+    </coverage>
+</phpunit>
