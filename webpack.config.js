@@ -32,7 +32,41 @@ const config = [{
     resolve: resolves(ENV, PATHS),
     module: modules(ENV, PATHS),
     plugins: plugins(ENV, PATHS),
-  }
+    }, {
+    name: 'react',
+    entry: {
+      main: Path.resolve(__dirname, 'app/client/src/react/bundle.jsx')
+    },
+    output: {
+      path: Path.resolve(__dirname, 'app/client/dist/react'),
+      filename: 'bundle.js',
+    },
+    devtool: (ENV !== 'production') ? 'source-map' : '',
+    resolve: {
+        ...resolves(ENV, PATHS),
+        alias: {
+            ...resolves(ENV, PATHS).alias,
+            // We resolve root fo quick access to scss
+            'Root': Path.resolve(__dirname, 'app/client/src/back/'),
+        },
+        extensions: [
+            ...resolves(ENV, PATHS).extensions,
+            '.json', '.js', '.jsx', '.gql', '.graphql'
+        ],
+    },
+    module: {
+      ...modules(ENV, PATHS),
+      rules: [
+        ...modules(ENV, PATHS).rules,
+        {
+          test: /\.(graphql|gql)$/,
+          exclude: /node_modules/,
+          loader: 'graphql-tag/loader',
+        }
+      ]
+    },
+    plugins: plugins(ENV, PATHS),
+    }
 ];
 
 module.exports = config;
