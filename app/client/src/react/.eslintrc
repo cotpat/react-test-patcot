@@ -1,0 +1,23 @@
+extends: "@syntro-opensource/eslint-config-base"
+parser: "@babel/eslint-parser"
+parserOptions:
+  babelOptions:
+    presets:
+      - "@babel/preset-react"
+settings:
+  import/resolver:
+    alias:
+      map:
+        - ['Root', './app/client/src/back']
+        - ['Components', './app/client/src/back/components']
+        - ['Components_Common', './app/client/src/back/components/common']
+        - ['Components_Model', './app/client/src/back/components/model']
+        - ['Components_Global', './app/client/src/back/components/global']
+        - ['Components_Views', './app/client/src/back/components/views']
+        - ['Constants', './app/client/src/back/constants']
+        - ['Contexts', './app/client/src/back/contexts']
+        - ['Hooks', './app/client/src/back/hooks']
+        - ['Util', './app/client/src/back/utils']
+        - ['Svg', './app/client/src/back/svg']
+        - ['Types', './app/client/src/back/types']
+      extensions: ['.node', '.js', '.jsx', '.json']

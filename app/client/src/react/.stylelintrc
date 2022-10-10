@@ -1,0 +1,14 @@
+extends:
+  - '@syntro-opensource/webpack-config/stylelint-config'
+# overrides:
+#   - files:
+#       - '**/*.scss'
+#       - good/**/_*.scss
+#       - good/sass/vendors/plugins/_vis-timeline.scss
+#     rules:
+#       declaration-no-important: null
+#       selector-max-compound-selectors: null
+#       selector-max-class: null
+#       no-duplicate-selectors: null
+#       scss/dollar-variable-default: null
+#       selector-no-qualifying-type: null
